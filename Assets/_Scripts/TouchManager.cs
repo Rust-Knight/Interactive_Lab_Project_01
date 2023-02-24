@@ -13,7 +13,7 @@ public class TouchManager : MonoBehaviour
     private InputAction touchPositionAction; // Variables for actions 
     private InputAction touchPressAction; // Variables for actions 
 
-    private void Awake()
+    private void Awake() //private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
         touchPressAction = playerInput.actions["TouchPress"]; // reference to our actions
