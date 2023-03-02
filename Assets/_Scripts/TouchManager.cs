@@ -13,12 +13,28 @@ public class TouchManager : MonoBehaviour
     private InputAction touchPositionAction; // Variables for actions 
     private InputAction touchPressAction; // Variables for actions 
 
+
+    
+
     private void Awake() //private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
         touchPressAction = playerInput.actions["TouchPress"]; // reference to our actions
         touchPositionAction = playerInput.actions["TouchPosition"]; // This is Cap Sensitive
     }
+
+   /* private void Update() // added 
+    {
+        if (touchPressAction.WasPerformedThisFrame())
+        {
+            Vector3 position = Camera.main.ScreenToWorldPoint(touchPositionAction.ReadValue<Vector2>());  // Convert wherever we're tapping to from screen to World coordinates 
+
+            position.z = player.transform.position.z; // set z to what it was before in this case our Player 
+
+            player.transform.position = position;
+        }
+    }
+   */
 
     private void OnEnable()
     {
@@ -40,6 +56,8 @@ public class TouchManager : MonoBehaviour
         player.transform.position = position;
 
     }
+
+  
 
 }
 

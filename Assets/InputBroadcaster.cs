@@ -5,29 +5,80 @@ using UnityEngine.InputSystem; // this will allow us to use the Input controller
 
 public class InputBroadcaster : MonoBehaviour
 {
-    /*
-    public bool IstapPressed { get; private set; } = false;
-    //TODO add other input events here
+    [SerializeField]
+    private float speed = 5f;
 
-     private void Update()
-     {
-         // Note: Put your Input/Detection here. This code
-         // is just for simple example and does not account 
-         // for new Input System setup.
-         if (Input.GetKeyDown(KeyCode.Mouse0))
-         {
-             IstapPressed = true;
+    [SerializeField]
+    private float jumpForce = 5f;
 
-         }
-         else if (Input.GetKeyUp(KeyCode.Mouse0))
-         {
-             IstapPressed = false;
-         } 
-     }
-    
-    */
+    [SerializeField]
+    private bool playerGrounded;
 
- 
+    [SerializeField]
+    private GameObject groundCheck;
+
+    [SerializeField]
+    private LayerMask groundLayer;
+
+    private PlayerActionController playerInput;
+
+    private float horizontalMovement;
+    private bool playerJumpTriggered;
+
+
+    private Rigidbody2D rigBody;
+
+    void Awake()
+    {
+        playerInput = new PlayerActionController();
+    }
+
+    private void Start()
+    {
+        rigBody = GetComponent<Rigidbody2D>();
+    }
+
+    void OnEnable()
+    {
+        playerInput.Player.Enable();
+    }
+
+    private void OnDisable()
+    {
+        playerInput.Player.Disable();
+    }
+
+    void Update()
+    {
+        horizontalMovement = Mathf.RoundToInt(playerInput.Player.Move.ReadValue<Vector2>().x);
+
+        playerGrounded = Physics2D.OverlapCircle(groundCheck.transform.position, 0.01f, groundLayer); //OverlapCircle
+
+
+        if (playerInput.Player.Jump.triggered)
+        {
+            //rigBody.velocity = new Vector2(rigBody.position.x, jumpForce);
+
+            playerJumpTriggered = true;
+        }
+
+
+
+
+
+    }
+
+    private void FixedUpdate()
+    {
+        var velocityX = speed * horizontalMovement;
+        rigBody.velocity = new Vector2(velocityX, rigBody.velocity.y);
+
+        if (playerJumpTriggered && playerGrounded)
+        {
+            playerJumpTriggered = false;
+            rigBody.velocity = new Vector2(rigBody.position.x, jumpForce);
+        }
+    }
 
 
 }

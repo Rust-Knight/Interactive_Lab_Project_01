@@ -35,7 +35,7 @@ public class GamePlayState : State
         base.Tick();
 
         
-        /*if (_controller.Input.IstapPressed == true)
+        /* (_controller.Input.IstapPressed == true)
         {
 
             // check for win condition
@@ -51,7 +51,13 @@ public class GamePlayState : State
         // check for lose condition
         //Debug.Log("Checking for Win Condition");
        //Debug.Log("Checking for Lose Condition");
+
+
+
+
     }
+
+
 
 
 

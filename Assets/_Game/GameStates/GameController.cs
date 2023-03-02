@@ -13,14 +13,15 @@ public class GameController : MonoBehaviour // store data needed for SetupGame t
     [SerializeField] private Transform _playerUnitSpawnLocation;
     [SerializeField] private UnitSpawner _unitSpawner;/* Because we’re going to ask the UnitSpawner to .Spawn() things in our states, we need to hold on to a public
                                                              reference to it in our GameController. */
-    [SerializeField] private InputBroadcaster _input;
+    [SerializeField] private InputBroadcaster _input; // InputBroadcaster
 
     public float LoseCondition => _loseCondition;
 
     public Unit PlayerUnitPrefab => _playerUnitPrefab;
     public Transform PlayerUnitSpawnLocation => _playerUnitSpawnLocation;
     public UnitSpawner UnitSpawner => _unitSpawner;
-    public InputBroadcaster Input => _input;
+    public InputBroadcaster Input => _input; // InputBroadcaster
+
 
 
     /*
