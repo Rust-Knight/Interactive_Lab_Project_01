@@ -61,7 +61,8 @@ public class StateMachineMB : MonoBehaviour
         if (CurrentState != null && !_inTransition)
             CurrentState.Tick();
     }
-
+    // virtual allows us to override in our FSM to check for
+    // 'AnyState' types of conditions
     protected virtual void FixedUpdate()
     {
         // simulate FixedUpdate in states 
