@@ -25,7 +25,7 @@ public class Hazard : MonoBehaviour
     }
 
 
-        void DestroyObjectDelayed()
+    void DestroyObjectDelayed()
     {
         // Kills the game object in 3 seconds after loading the object
         Destroy(gameObject, 3);

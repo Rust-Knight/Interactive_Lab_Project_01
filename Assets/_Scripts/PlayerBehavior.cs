@@ -30,12 +30,13 @@ public class PlayerBehavior : MonoBehaviour
         {
             PlayerTakeDmg(20);
             Debug.Log(GameManager.gameManager._playerHealth.Health);
+
             
         }
 
         if (other.CompareTag("HealthIteam"))
         {
-            PlayerHeal(10);
+            PlayerHeal(15);
             Debug.Log(GameManager.gameManager._playerHealth.Health);
         }
 
@@ -56,7 +57,6 @@ public class PlayerBehavior : MonoBehaviour
     {
         GameManager.gameManager._playerHealth.DmgUnit(dmg);
         _healthbar.SetHealth(GameManager.gameManager._playerHealth.Health);
-        
 
     }
 
@@ -66,4 +66,6 @@ public class PlayerBehavior : MonoBehaviour
         _healthbar.SetHealth(GameManager.gameManager._playerHealth.Health);
      
     }
+
+  
 }
